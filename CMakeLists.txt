@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.30) # 3.30
-project(test_game C) # --> Set ${PROJECT_NAME} variable
+project(test_game C) # --> Sets ${PROJECT_NAME} variable
 set(CMAKE_C_STANDARD 99)
 
 # Adding Raylib
