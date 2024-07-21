@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.30) # 3.30
-project(test_game C) # --> Sets ${PROJECT_NAME} variable
+
+# should be the same a EXEC_FILE_NAME in run.sh
+project(test_game C) # --> Sets ${PROJECT_NAME} variable throughout file
 set(CMAKE_C_STANDARD 99)
 
 # Adding Raylib
@@ -22,13 +24,14 @@ file(GLOB_RECURSE PROJECT_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/s
 set(PROJECT_INCLUDE "${CMAKE_CURRENT_LIST_DIR}/src/") # Define PROJECT_INCLUDE to be the path to the include directory of the project
 
 # Declaring our executable
+# See Line 4 for ${PROJECT_NAME} declaration
 add_executable(${PROJECT_NAME})
 target_sources(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCES})
 target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_INCLUDE})
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
 
-# To make a lighter build you may be able to add linker 
-# and compiler optimizations to remove dead code. 
+# To make a lighter build you may be able to add linker
+# and compiler optimizations to remove dead code.
 
 # Setting ASSETS_PATH
 target_compile_definitions(${PROJECT_NAME} PUBLIC ASSETS_PATH="${CMAKE_CURRENT_SOURCE_DIR}/assets/") # Set the asset path macro to the absolute path on the dev machine
